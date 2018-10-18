@@ -961,6 +961,9 @@ void *TrainModelThread(void *id) {
           
           // At this point, our two words are represented by their index into
           // the layer weights.
+
+          // Question: I think l1 should be the index of the context
+
           // l1 - The index of our input word within the hidden layer weights.
           // l2 - The index of our output word within the output layer weights.
           // label - Whether this is a positive (1) or negative (0) example.
