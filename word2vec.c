@@ -125,6 +125,19 @@ void InitUnigramTable() {
   i = 0;
   d1 = pow(vocab[i].cn, power) / train_words_pow;
   for (a = 0; a < table_size; a++) {
+    /*
+    This table stores the indices of words. 
+    Except for the first two entries of the table, 
+    all the entries store the indices of words according to
+    their unigram distribution raised to 3/4th power.
+    For example, vocab[1].word has the highest count, so the 
+    first table_size * vocab[1].prob are mainly the index 1. This 
+    also applies to the following words since the vocab is sorted by the descending
+    order of word counts.
+
+    Sampling method: randomly generate a number within the range 0~table_size, take
+    the entry indexed by this number.
+    */
     // [Chris] - The table may contain multiple elements which hold value 'i'.
     //           
     table[a] = i;
